@@ -1,5 +1,4 @@
 from django.db import models
-from ecommerce import settings
 from django.contrib.auth.models import User
 from products.models import Product
 
@@ -28,6 +27,7 @@ class Order(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    total = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
